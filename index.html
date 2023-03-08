@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/a3bb7984ca.js" crossorigin="anonymous"></script>
+
+        <title>Dictionary</title>
+</head>
+<body>
+    
+        <div class="disc"><h1>Dictionary</h1></div>
+        <div class="search-box">
+            <input class="text-white" type="text" placeholder="Enter the word..."id="inpword"/>
+            <button onclick="dictionA()" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button> 
+        </div> <br>
+        <div class="result mt-3 " id="result"></div>
+    </div>
+    
+</body>
+<script>
+       
+    function dictionA(){
+     dictionary=inpword.value
+     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${dictionary}`)
+     .then(data=>data.json()).then(data=>displayData(data))
+     
+    }
+    function displayData(datas){ 
+    definition=datas[0].meanings[0].definitions[0].definition
+
+    result.innerHTML=`
+      
+     
+         <h4 class="dict">"${dictionary}" is mean by ${definition} </h4>
+     
+     
+`
+
+
+    }   
+
+ </script>
+</html>
